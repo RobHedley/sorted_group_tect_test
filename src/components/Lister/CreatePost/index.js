@@ -22,6 +22,8 @@ const CreatePost = ({ onCreate }) => {
 					body: '',
 					author: ''
 				}
+			default:
+				return {...state}
 		}
 	};
 

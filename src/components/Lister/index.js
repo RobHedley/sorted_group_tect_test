@@ -17,7 +17,15 @@ const Lister = () => {
 	}, []);
 
 	useEffect(() => {
-		console.log('I am in')
+		const onDeletePost = (id) => {
+			const toDelete = allPosts.indexOf(allPosts.find(function( obj ) { return obj.id === id; }))
+			let deleteArray = allPosts
+			if(toDelete !== -1){
+				deleteArray.splice(toDelete, 1);
+			}
+			setPosts([...deleteArray])
+		}
+		
 		const postList = allPosts.map((post, i) => {
 			console.log(post.title)
 			return (
@@ -26,15 +34,6 @@ const Lister = () => {
 		  });
 		  setPostList(postList)
 	},[allPosts])
-
-	const onDeletePost = (id) => {
-		const toDelete = allPosts.indexOf(allPosts.find(function( obj ) { return obj.id === id; }))
-		let deleteArray = allPosts
-		if(toDelete !== -1){
-			deleteArray.splice(toDelete, 1);
-		}
-		setPosts([...deleteArray])
-	}
 
 	const onCreatePost = post => {
 		let addArray = allPosts
